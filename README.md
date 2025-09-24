@@ -46,12 +46,11 @@ Powered by **FastAPI**, **FAISS**, **SentenceTransformers**, and **LLMs** for re
 
 ## 🔁 Workflow
 
-```text
 PDF Upload → /upload → OCR Text → /index → FAISS Vector Store
          └─> /query     → Q&A with sources
          └─> /chat      → Conversational multi-turn Q&A
          └─> /summarize → Concise summary generation
-📂 Project Structure
+## 📂 Project Structure
 
 app/
 ├── main.py          # FastAPI entrypoint with routes
@@ -65,20 +64,21 @@ app/
 requirements.txt
 .env.example
 
-⚙️ Setup & Run
-1. Clone Repo
+## ⚙️ Setup & Run
+### 1. Clone Repo
 
 git clone https://github.com/yourusername/smart-doc-ai-assistant.git
 cd smart-doc-ai-assistant
-2. Create Virtual Env
+### 2. Create Virtual Env
 
 python -m venv venv
 source venv/bin/activate   # Linux/Mac
 venv\Scripts\activate      # Windows
-3. Install Dependencies
+### 3. Install Dependencies
 
 pip install -r requirements.txt
-4. Add Environment Variables
+### 4. Add Environment Variables
+
 Create .env file:
 
 env
@@ -86,12 +86,12 @@ AZURE_OCR_ENDPOINT=your_azure_endpoint
 AZURE_OCR_KEY=your_azure_key
 LLM_BACKEND=openai
 LLM_API_KEY=your_openai_api_key
-5. Run Server
+### 5. Run Server
 
 uvicorn app.main:app --reload
 Backend runs at → http://localhost:8000
 
-📮 Example API Calls (cURL)
+### 📮 Example API Calls (cURL)
 Upload PDF
 
 curl -X POST "http://localhost:8000/upload" \
@@ -106,7 +106,7 @@ Query
 curl -X POST "http://localhost:8000/query" \
      -H "Content-Type: application/json" \
      -d '{"question":"What is the main idea?","k":5}'
-📊 Performance Highlights
+## 📊 Performance Highlights
 ⏱️ Processes 100+ page PDFs in <2s end-to-end.
 
 🎯 Achieves 95%+ answer accuracy and 90%+ query resolution.
@@ -115,8 +115,10 @@ curl -X POST "http://localhost:8000/query" \
 
 🔄 Supports concurrent multi-user sessions with chat history.
 
-🏆 Why This Project Matters
+## 🏆 Why This Project Matters
 This project demonstrates:
+
+Engineered **OCR pipeline + RAG service** (end-to-end system design)  
 
 Applied RAG pipelines with embeddings + LLMs
 
