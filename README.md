@@ -47,21 +47,32 @@ Powered by **FastAPI**, **FAISS**, **SentenceTransformers**, and **LLMs** for re
 ## 🔁 Workflow
 
 PDF Upload → /upload → OCR Text → /index → FAISS Vector Store
-         └─> /query     → Q&A with sources
-         └─> /chat      → Conversational multi-turn Q&A
-         └─> /summarize → Concise summary generation
+└─> /query     → Q&A with sources
+
+└─> /chat      → Conversational multi-turn Q&A
+
+└─> /summarize → Concise summary generation
 ## 📂 Project Structure
 
 app/
 ├── main.py          # FastAPI entrypoint with routes
+
 ├── models.py        # Request/response schemas
+
 ├── ocr.py           # Azure OCR client
+
 ├── chunker.py       # Text chunking logic
+
 ├── embeddings.py    # Embedding generator (SentenceTransformers)
+
 ├── vector_store.py  # FAISS vector DB wrapper
+
 ├── llm_client.py    # LLM call wrapper (OpenAI/stub)
+
 ├── rag_service.py   # RAG pipeline (indexing, query, chat, summarization)
+
 requirements.txt
+
 .env.example
 
 ## ⚙️ Setup & Run
