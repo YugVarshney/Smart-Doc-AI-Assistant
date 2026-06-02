@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Aurora-Midnight Light Mode (lavender tinted white background with violet & cyan accents) */
+  --background: 250, 249, 253;
+  --foreground: 18, 12, 38;
+  --primary: 139, 92, 246; /* Electric Purple */
+  --primary-foreground: 255, 255, 255;
+  --secondary: 242, 240, 249;
+  --secondary-foreground: 18, 12, 38;
+  --border: 228, 224, 242;
+  --input: 228, 224, 242;
+  --ring: 139, 92, 246;
+  --muted: 125, 115, 145;
+  --muted-foreground: 100, 90, 120;
+  --accent: 8, 145, 178; /* Electric Cyan */
+  --accent-foreground: 255, 255, 255;
+  --card: 255, 255, 255;
+  --card-foreground: 18, 12, 38;
+}
+
+.dark {
+  /* Aurora-Midnight Dark Mode (obsidian midnight canvas with electric purple & neon cyan accents) */
+  --background: 4, 3, 9; /* Deepest Midnight Obsidian */
+  --foreground: 241, 236, 253; /* Cool Lavender-White */
+  --primary: 168, 85, 247; /* Neon Violet */
+  --primary-foreground: 255, 255, 255;
+  --secondary: 18, 14, 32; /* Deep midnight purple-gray */
+  --secondary-foreground: 241, 236, 253;
+  --border: 30, 22, 50; /* Subtle thin violet border */
+  --input: 30, 22, 50;
+  --ring: 168, 85, 247;
+  --muted: 139, 124, 163;
+  --muted-foreground: 113, 98, 138;
+  --accent: 6, 182, 212; /* Neon Cyan */
+  --accent-foreground: 255, 255, 255;
+  --card: 11, 8, 22; /* Frosted dark card base */
+  --card-foreground: 241, 236, 253;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  scroll-behavior: smooth;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.04) 0px, transparent 50%);
+  background-attachment: fixed;
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--border), 0.8);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--muted), 0.5);
+}
+
+/* Markdown styling inside Chat Bubbles */
+.prose {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.prose p {
+  margin-bottom: 0.75rem;
+}
+
+.prose strong {
+  @apply font-bold text-foreground;
+}
+
+.prose ul, .prose ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose li {
+  margin-bottom: 0.25rem;
+}
+
+code {
+  @apply bg-primary/20 text-zinc-100 px-1.5 py-0.5 rounded text-[11px] font-mono;
+}
+
+.prose pre {
+  @apply bg-secondary border border-border p-3 rounded-lg overflow-x-auto text-xs font-mono my-3;
+}
+
+/* Premium UI utilities */
+
+.glass-card-premium {
+  background: rgba(var(--card), 0.45);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(var(--border), 0.5);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-card-premium {
+  background: rgba(11, 8, 22, 0.4);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  box-shadow: 
+    0 8px 32px 0 rgba(8, 4, 18, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.02);
+}
+
+.text-gradient-primary {
+  @apply bg-gradient-to-r from-primary via-violet-500 to-accent bg-clip-text text-transparent;
+}
+
+.text-gradient-secondary {
+  @apply bg-gradient-to-r from-pink-500 via-fuchsia-500 to-primary bg-clip-text text-transparent;
+}
+
+.aurora-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.aurora-bg::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  animation: pulse-glow-1 12s infinite alternate ease-in-out;
+}
+
+.aurora-bg::after {
+  content: "";
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+  filter: blur(90px);
+  z-index: 0;
+  pointer-events: none;
+  animation: pulse-glow-2 16s infinite alternate ease-in-out;
+}
+
+@keyframes pulse-glow-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(40px, 30px) scale(1.2); }
+}
+
+@keyframes pulse-glow-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-30px, -40px) scale(1.15); }
+}
+
